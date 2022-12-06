@@ -1,0 +1,23 @@
+1. Configuring static static IP address
+  Use ifconfig to know current address
+  Use ip route | grep default to show the gateway
+ 
+  -Switch to root and create a configuration file
+   vim/etc/sysconfig/network-scripts/ifcfg-enp0s3 and make the following changes
+   IPADDR = 192.168.0.6
+   NETMASK = 255.255.255.0
+   GATEWAY: 192.168.0.1
+   DNS1: 8.8.8.8
+   DNS2: 8.8.8.8
+   save and exit the file with Esc,:wq and reboot
+
+1a. Installing nslookup, digs and host commands.
+   sudo yum update
+   sudo yum install blind-utils
+
+   Installing nmap
+   sudo yum install nmap
+
+2. Check available open ports with nmap -St localhost
+
+   

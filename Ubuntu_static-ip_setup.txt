@@ -1,0 +1,28 @@
+1. Making a current IP addresss static.
+  # Create a configuration file,
+  Vi /etc/netplan/00-installer-config.yaml and make changes
+  # This is the ntwork config written by 'subiquity'
+  network:
+     version: 2
+     renderer: netword
+     enternets:
+       enp0s3:
+	addresses:
+	  -192.168.0.10/24
+	nameservers:
+	    search: [mydomain, otherdomain]
+	    addresses: [10.10.10.1, 1.1.1.1]
+	save and exit with Esc :wq
+ 
+ # To accept the configuration.
+   sudo netplan try, pressenter before changes will be reverted.
+   sudo netpaln apply.
+
+1a. Installing nslookup, dig and host commands
+    sudo apt update
+    sudo apt-get install dnsutils -y
+    
+    Installing firewalld
+    sudo apt update
+    sudo apt-get install firewalld
+    sudo systemctl status firewalld
